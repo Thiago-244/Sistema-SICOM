@@ -18,12 +18,20 @@ class Router {
     public function dispatch(): void {
         Session::start();
 
-        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $rawUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = rawurldecode($rawUri);
         $method = $_SERVER['REQUEST_METHOD'];
 
         // Extraer la ruta relativa quitando el prefijo del directorio local en XAMPP (/Sistema SICOM/public)
-        $scriptName = dirname($_SERVER['SCRIPT_NAME']);
-        $path = '/' . trim(substr($uri, strlen($scriptName)), '/');
+        $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+        
+        if ($scriptDir !== '/' && str_starts_with($uri, $scriptDir)) {
+            $path = substr($uri, strlen($scriptDir));
+        } else {
+            $path = $uri;
+        }
+
+        $path = '/' . trim($path, '/');
 
         // Limpiar parámetros query extra
         if (($pos = strpos($path, '?')) !== false) {

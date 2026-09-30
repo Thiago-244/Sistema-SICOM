@@ -12,10 +12,10 @@ class Auth {
             SELECT u.*, r.nombre as rol_nombre 
             FROM users u
             JOIN roles r ON u.rol_id = r.id
-            WHERE (u.username = :user OR u.email = :user) AND u.estado = 'Activo'
+            WHERE (u.username = :user OR u.email = :email) AND u.estado = 'Activo'
             LIMIT 1
         ");
-        $stmt->execute(['user' => $username]);
+        $stmt->execute(['user' => $username, 'email' => $username]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password_hash'])) {

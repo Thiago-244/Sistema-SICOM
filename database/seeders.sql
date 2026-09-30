@@ -37,9 +37,9 @@ INSERT INTO `dependencias` (`id`, `nombre`, `siglas`, `tipo`, `ugel_codigo`) VAL
 
 -- 5. USUARIOS INICIALES (Contraseña por defecto: Admin123!_ hash bcrypt)
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `rol_id`, `estado`) VALUES
-(1, 'admin.rrpp', 'rrpp.jefatura@drep.gob.pe', '$2y$10$e7xX38GqV9WwGqK5zYJ.O.7VqgL5K8bZ6wU7kL9oQ1aB2c3d4e5f6', 1, 'Activo'),
-(2, 'comunicador1', 'comunicador1@drep.gob.pe', '$2y$10$e7xX38GqV9WwGqK5zYJ.O.7VqgL5K8bZ6wU7kL9oQ1aB2c3d4e5f6', 2, 'Activo'),
-(3, 'director.drep', 'direccion@drep.gob.pe', '$2y$10$e7xX38GqV9WwGqK5zYJ.O.7VqgL5K8bZ6wU7kL9oQ1aB2c3d4e5f6', 3, 'Activo');
+(1, 'admin.rrpp', 'rrpp.jefatura@drep.gob.pe', '$2y$10$VltwucDW7Ztwnw5LuTlbruUBWeSN1Xt9DEtPAiPOpC9xomv3Fk9Be', 1, 'Activo'),
+(2, 'comunicador1', 'comunicador1@drep.gob.pe', '$2y$10$VltwucDW7Ztwnw5LuTlbruUBWeSN1Xt9DEtPAiPOpC9xomv3Fk9Be', 2, 'Activo'),
+(3, 'director.drep', 'direccion@drep.gob.pe', '$2y$10$VltwucDW7Ztwnw5LuTlbruUBWeSN1Xt9DEtPAiPOpC9xomv3Fk9Be', 3, 'Activo');
 
 -- 6. PERFIL DE COMUNICADOR DE PRUEBA
 INSERT INTO `comunicadores` (`id`, `user_id`, `dni`, `nombres`, `apellidos`, `telefono`, `cargo`, `dependencia_id`, `disponibilidad`, `estado`) VALUES
